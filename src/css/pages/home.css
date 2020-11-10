@@ -1,3 +1,12 @@
+a {
+  cursor: pointer;
+}
+
+section {
+  overflow: hidden;
+  position: relative;
+}
+
 /* Header section style */
 
 .header {
@@ -7,6 +16,18 @@
 .heading-title {
   color: var(--headline-color);
   font-size: clamp(30px, 6vw, 120px);
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heading-title .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0.3em;
+  right: 0;
+  opacity: 0; 
 }
 
 .img-container {
@@ -14,5 +35,23 @@
 }
 
 .hero-img {
-  max-width: 100%;
+  max-width: 80%;
+}
+
+@media screen and (min-width: 992px) {
+  .hero-img {
+    position: absolute;
+    z-index: 2;
+    left: 10%;
+  }
+
+  .header {
+    min-height: 800px;
+  }
+}
+
+/* about us section */
+
+.about-us {
+  background-color: var(--secondary-bg-color);
 }
