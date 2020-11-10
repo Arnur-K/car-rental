@@ -1,6 +1,6 @@
 :root {
-  --surface-color: rgb(255, 255, 255);
-  --primary-color: orangered;
-  /* --secondary-color: */
-  /* etc */
+  --bg-color: #004643;
+  --headline-color: #fffffe;
+  --secondary-bg-color: #f9bc60;
+  --black-text: #001e1d;
 }
