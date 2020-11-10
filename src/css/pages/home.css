@@ -1,0 +1,18 @@
+/* Header section style */
+
+.header {
+  background-color: var(--bg-color);
+}
+
+.heading-title {
+  color: var(--headline-color);
+  font-size: clamp(30px, 6vw, 120px);
+}
+
+.img-container {
+  max-width: 100%;
+}
+
+.hero-img {
+  max-width: 100%;
+}
