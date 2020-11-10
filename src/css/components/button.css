@@ -5,6 +5,16 @@ button {
 }
 
 .button-primary {
+  background-color: var(--secondary-bg-color);
+  border-radius: 25px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  border: 0;
+  color: var(--bg-color);
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .button-secondary {
