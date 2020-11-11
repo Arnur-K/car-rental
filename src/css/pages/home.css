@@ -1,5 +1,10 @@
 a {
   cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 body {
@@ -119,6 +124,13 @@ body {
   flex-direction: column;
   display: flex;
   position: relative;
+  transition: all 0.5s ease;
+}
+
+@media screen and (min-width: 992px) {
+  .card-container:hover {
+    transform: scale(1.15);
+  }
 }
 
 .card-container .img-container {
@@ -172,4 +184,34 @@ body {
   .card-container {
     margin-bottom: 90px;
   }
+}
+
+/* offer section */
+
+.offer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.text-container-offer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+.offer-icon {
+  max-width: 120px;
+}
+
+@media screen and (max-width: 991px) {
+  .offer .row .offer-container:first-child {
+    margin-bottom: 3rem;
+  }
+}
+
+.offer-title, .offer-container .paragraph {
+  color: var(--headline-color);
 }
