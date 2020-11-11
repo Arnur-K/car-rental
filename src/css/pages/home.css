@@ -107,3 +107,69 @@ body {
 }
 
 
+/* tariffs section */
+
+.card-row {
+  margin-top: 6rem;
+}
+
+.card-container {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+}
+
+.card-container .img-container {
+  position: relative;
+  margin-left: -50%;
+}
+
+.card-image {
+  max-width: 250px;
+  position: absolute;
+  top: -60px;
+}
+
+.price-card {
+  max-width: 400px;
+  padding: 20px;
+}
+
+.card-container:first-child .price-card {
+  background-color: var(--secondary-bg-color);
+}
+
+.card-container:first-child .price-card .card-text, 
+.card-container:first-child .price-card .card-tariff {
+  color: var(--headline-color);
+}
+
+.card-container:nth-child(2) .price-card {
+  background-color: var(--headline-color);
+}
+
+.card-container:nth-child(2) .price-card .card-text,
+.card-container:nth-child(2) .price-card .card-tariff {
+  color: var(--bg-color);
+}
+
+.card-container:last-child .price-card {
+  background-color: #e16162;
+}
+
+.card-container:last-child .price-card .card-text,
+.card-container:last-child .price-card .card-tariff {
+  color: var(--headline-color);
+}
+
+.card-title {
+  color: var(--black-text);
+}
+
+@media screen and (max-width: 991px) {
+  .card-container {
+    margin-bottom: 90px;
+  }
+}
