@@ -116,3 +116,7 @@
 		width: 100%;
 	}
 }
+
+.show>.btn-primary.dropdown-toggle:focus {
+	box-shadow: none;
+}

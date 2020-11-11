@@ -2,6 +2,10 @@ a {
   cursor: pointer;
 }
 
+body {
+  background-color: var(--bg-color);
+}
+
 /* Header section style */
 
 .header {
@@ -63,6 +67,13 @@ a {
   }
 }
 
+@media screen and (max-width: 991px) {
+  .hero-img {
+    margin-bottom: 3rem;
+    max-width: 95%;
+  }
+}
+
 @media screen and (min-width: 992px) and (max-width: 1499px) {
   .header {
     min-height: 600px;
@@ -86,3 +97,13 @@ a {
 .about-us {
   background-color: var(--secondary-bg-color);
 }
+
+.about-us .paragraph {
+  color: var(--headline-color);
+}
+
+.about-container {
+  padding-top: 10%;
+}
+
+

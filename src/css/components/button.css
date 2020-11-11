@@ -11,5 +11,18 @@
   font-weight: bold;
   cursor: pointer;
   z-index: 2;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+.button-primary:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-primary:hover {
+  background-color: var(--bg-color);
+  border: 3px solid var(--bg-color);
+  color: var(--secondary-bg-color);
 }
 
