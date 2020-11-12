@@ -66,3 +66,5 @@ anime.timeline({loop: true})
     delay: 500
   });
 });
+
+AOS.init({disable:'mobile'});
