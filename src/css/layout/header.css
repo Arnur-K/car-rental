@@ -1,3 +1,11 @@
+header {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
 .form-control {
   box-shadow: none;
   font-weight: normal;
@@ -10,6 +18,10 @@
   border-bottom: 1px solid #dfe3e8;
   border-radius: 0;
   z-index: 999;
+}
+
+.navbar-nav a:not(:last-child) {
+  margin-right: 16px;
 }
 
 .nav-link img {
