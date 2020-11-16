@@ -80,6 +80,7 @@ function initAuthForms() {
       fields.forEach((field) => {
         credentials[field.getAttribute('name')] = field.value;
       });
+
       authUser(authMethod, credentials);
     };
   });
@@ -109,14 +110,13 @@ function initFirebase() {
 }
 
 function initAnimations() {
-  var heading = {}
-  heading.opacityIn= [0, 1];
-  heading.sclaeIn= [0.2, 1];
-  heading.scaleOut= 3;
-  heading.durationIn= 800,
-  heading.durationOut= 600;
-  heading.delay= 500;
-  
+  var heading = {};
+  heading.opacityIn = [0, 1];
+  heading.sclaeIn = [0.2, 1];
+  heading.scaleOut = 3;
+  heading.durationIn = 800;
+  heading.durationOut = 600;
+  heading.delay = 500;
 
   AOS.init({ disable: 'mobile' });
 
