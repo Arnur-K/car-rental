@@ -150,7 +150,7 @@ header {
 }
 
 @media screen and (min-width: 992px) {
-  .navbar .action-form {
+  .navbar .action-form.log-out-form {
     height: 80px;
     background-color: var(--bg-color) !important;
   }

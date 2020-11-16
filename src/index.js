@@ -6,7 +6,7 @@ function displayUserData(data) {
   template.innerHTML = `<div class="navbar-nav user-log ml-auto action-buttons">
     <div class="nav-item dropdown">
       <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">${data}</a>
-      <div class="dropdown-menu action-form">
+      <div class="dropdown-menu action-form log-out-form">
         <form name="signup">
           <input type="submit" class="btn btn-primary btn-block" value="Sign Out">
         </form>
