@@ -225,10 +225,12 @@ body {
 
 .carousel {
   height: 100%;
+  overflow: hidden;
 }
 
 .testimonial-carousel {
   height: 248px;
+  overflow: hidden;
 }
 
 .carousel-inner {
@@ -264,6 +266,10 @@ body {
   .carousel-indicators {
     bottom: -30px;
   }
+}
+
+.carousel-indicators {
+  bottom: 40px;
 }
 
 .carousel-content {
