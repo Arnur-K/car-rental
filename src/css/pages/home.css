@@ -19,6 +19,7 @@ body {
 }
 .hero-text {
   overflow: hidden;
+  padding-top: 40px;
 }
 
 .heading-title {

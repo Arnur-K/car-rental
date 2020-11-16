@@ -21,7 +21,6 @@ function initFirebase() {
 }
 
 function initAnimations() {
-<<<<<<< HEAD
   var heading = {}
   heading.opacityIn= [0, 1];
   heading.sclaeIn= [0.2, 1];
@@ -30,15 +29,6 @@ function initAnimations() {
   heading.durationOut= 600;
   heading.delay= 500;
   
-=======
-  var heading = {};
-  heading.opacityIn = [0, 1];
-  heading.sclaeIn = [0.2, 1];
-  heading.scaleOut = 3;
-  heading.durationIn = 800;
-  heading.durationOut = 600;
-  heading.delay = 500;
->>>>>>> dev
 
   AOS.init({ disable: 'mobile' });
 
