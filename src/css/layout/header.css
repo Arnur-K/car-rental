@@ -1,122 +1,124 @@
 .form-control {
-	box-shadow: none;		
-	font-weight: normal;
-	font-size: 13px;
+  box-shadow: none;
+  font-weight: normal;
+  font-size: 13px;
 }
 .navbar {
-	background: var(--bg-color);
-	padding-left: 16px;
-	padding-right: 16px;
-	border-bottom: 1px solid #dfe3e8;
+  background: var(--bg-color);
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid #dfe3e8;
   border-radius: 0;
   z-index: 999;
 }
 
 .nav-link img {
-	border-radius: 50%;
-	width: 36px;
-	height: 36px;
-	margin: -8px 0;
-	float: left;
-	margin-right: 10px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -8px 0;
+  float: left;
+  margin-right: 10px;
 }
 .navbar .navbar-brand {
-	padding-left: 0;
-	font-size: 20px;
+  padding-left: 0;
+  font-size: 20px;
   padding-right: 50px;
   color: var(--headline-color);
 }
 .navbar .navbar-brand b {
-	color: var(--secondary-bg-color);		
+  color: var(--secondary-bg-color);
 }
 .navbar .form-inline {
-	display: inline-block;
+  display: inline-block;
 }
 .navbar a {
-	color: var(--headline-color) !important;
+  color: var(--headline-color) !important;
   font-size: 15px;
   padding: 8px 20px;
-	background: transparent;
-	line-height: normal;
+  background: transparent;
+  line-height: normal;
 }
 
 .navbar a.nav-link:hover {
   color: var(--secondary-bg-color) !important;
   transform: scale(1.2);
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 .navbar .sign-up-btn {
-	min-width: 110px;
-	max-height: 36px;
+  min-width: 110px;
+  max-height: 36px;
 }
 
 .navbar .dropdown-menu {
-	color: #999;
-	font-weight: normal;
-	border-radius: 1px;
-	border-color: #e5e5e5;
-	box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  color: #999;
+  font-weight: normal;
+  border-radius: 1px;
+  border-color: #e5e5e5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .navbar .navbar-form {
-	border: none;
+  border: none;
 }
 .navbar .action-form {
-	width: 280px;
-	padding: 20px;
-	left: auto;
-	right: 0;
-	font-size: 14px;
+  width: 280px;
+  padding: 20px;
+  left: auto;
+  right: 0;
+  font-size: 14px;
 }
-.navbar .action-form a {		
-	color: #33cabb;
-	padding: 0 !important;
-	font-size: 14px;
+.navbar .action-form a {
+  color: #33cabb;
+  padding: 0 !important;
+  font-size: 14px;
 }
 .navbar .action-form .hint-text {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 13px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 13px;
 }
-.navbar .btn-primary, .navbar .btn-primary:active {
-	color: var(--headline-color);
-	background: var(--secondary-bg-color) !important;
-	border: none;
-}	
-.navbar .btn-primary:hover, .navbar .btn-primary:focus {		
-	color: var(--headline-color);
-	background: var(--secondary-bg-color) !important;
+.navbar .btn-primary,
+.navbar .btn-primary:active {
+  color: var(--headline-color);
+  background: var(--secondary-bg-color) !important;
+  border: none;
+}
+.navbar .btn-primary:hover,
+.navbar .btn-primary:focus {
+  color: var(--headline-color);
+  background: var(--secondary-bg-color) !important;
 }
 
 .navbar .action-buttons .dropdown-toggle::after {
-	display: none;
+  display: none;
 }
 .form-check-label input {
-	position: relative;
-	top: 1px;
+  position: relative;
+  top: 1px;
 }
-@media (min-width: 1200px){
-	.form-inline .input-group {
-		width: 300px;
-		margin-left: 30px;
-	}
+@media (min-width: 1200px) {
+  .form-inline .input-group {
+    width: 300px;
+    margin-left: 30px;
+  }
 }
-@media (max-width: 768px){
-	.navbar .dropdown-menu.action-form {
-		width: 100%;
-		padding: 10px 15px;
-		background: transparent;
-		border: none;
-	}
-	.navbar .form-inline {
-		display: block;
-	}
-	.navbar .input-group {
-		width: 100%;
-	}
+@media (max-width: 768px) {
+  .navbar .dropdown-menu.action-form {
+    width: 100%;
+    padding: 10px 15px;
+    background: transparent;
+    border: none;
+  }
+  .navbar .form-inline {
+    display: block;
+  }
+  .navbar .input-group {
+    width: 100%;
+  }
 }
 
-.show>.btn-primary.dropdown-toggle:focus {
-	box-shadow: none;
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
 }

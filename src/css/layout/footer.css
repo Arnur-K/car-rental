@@ -1,13 +1,13 @@
 /* Footer style */
 
 footer {
- background-color: var(--secondary-bg-color);
- color: var(--headline-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--headline-color);
 }
 
 footer a {
   color: var(--headline-color);
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 footer a:hover {

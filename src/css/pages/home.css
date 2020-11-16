@@ -35,7 +35,7 @@ body {
   left: 0;
   top: 0.3em;
   right: 0;
-  opacity: 0; 
+  opacity: 0;
 }
 
 .hero-subtitle {
@@ -43,18 +43,17 @@ body {
   color: var(--secondary-bg-color);
 }
 
-@media screen and (min-width:1500px) {
+@media screen and (min-width: 1500px) {
   .spacer {
     margin-bottom: 200px;
   }
 }
 
-@media screen and (min-width:1201px) and (max-width: 1499px) {
+@media screen and (min-width: 1201px) and (max-width: 1499px) {
   .spacer {
     margin-bottom: 100px;
   }
 }
-
 
 .img-container {
   max-width: 100%;
@@ -111,7 +110,6 @@ body {
   padding-top: 10%;
 }
 
-
 /* tariffs section */
 
 .card-row {
@@ -153,7 +151,7 @@ body {
   background-color: var(--secondary-bg-color);
 }
 
-.card-container:first-child .price-card .card-text, 
+.card-container:first-child .price-card .card-text,
 .card-container:first-child .price-card .card-tariff {
   color: var(--headline-color);
 }
@@ -212,11 +210,15 @@ body {
   }
 }
 
-.offer-title, .offer-container .paragraph {
+.offer-title,
+.offer-container .paragraph {
   color: var(--headline-color);
 }
 
 /* testimonials section */
+
+.testimonial-carousel {
+}
 
 @media screen and (max-width: 495px) {
   .testimonial-carousel .title-custom {
@@ -225,6 +227,7 @@ body {
 }
 
 .carousel-inner {
+  position: initial;
   padding: 50px;
   padding-left: 90px;
   padding-right: 90px;
@@ -235,6 +238,9 @@ body {
   font-size: 24px;
   font-weight: 600;
   color: var(--headline-color);
+}
+
+.carousel-indicators {
 }
 
 @media screen and (max-width: 478px) {
@@ -286,6 +292,10 @@ body {
 .carousel-indicators li {
   background-color: var(--secondary-bg-color);
   cursor: pointer;
+}
+
+.carousel-item {
+  position: absolute;
 }
 
 .carousel-item.active {

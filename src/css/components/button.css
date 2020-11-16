@@ -11,7 +11,7 @@
   font-weight: bold;
   cursor: pointer;
   z-index: 2;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   -webkit-appearance: none;
 }
 
@@ -25,4 +25,3 @@
   border: 3px solid var(--bg-color);
   color: var(--secondary-bg-color);
 }
-

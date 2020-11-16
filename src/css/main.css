@@ -11,6 +11,7 @@
 /* Layout */
 @import './layout/navigation.css';
 @import './layout/header.css';
+@import './layout/main.css';
 @import './layout/footer.css';
 
 /* Pages */
