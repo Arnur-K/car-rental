@@ -14,7 +14,7 @@ const dispatchErrorMsg = (target, msg) =>
   (document.querySelector(`p[name="${target}"]`).innerText = msg);
 
 async function authUser(method, credentials) {
-  const { email, password } = credentials;
+  const { email, password, confirmedPassword } = credentials;
 
   switch (method) {
     case 'login':
