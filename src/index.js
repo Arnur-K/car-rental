@@ -21,14 +21,14 @@ function initFirebase() {
 }
 
 function initAnimations() {
-  const heading = {
-    opacityIn: [0, 1],
-    sclaeIn: [0.2, 1],
-    scaleOut: 3,
-    drationIn: 800,
-    durationOut: 600,
-    delay: 500,
-  };
+  var heading = {}
+  heading.opacityIn= [0, 1];
+  heading.sclaeIn= [0.2, 1];
+  heading.scaleOut= 3;
+  heading.durationIn= 800,
+  heading.durationOut= 600;
+  heading.delay= 500;
+  
 
   AOS.init({ disable: 'mobile' });
 
