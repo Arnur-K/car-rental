@@ -1,21 +1,21 @@
 function displayUserData(data) {
-  document.querySelector('#auth-buttons').setAttribute('hidden', '');
-
   const template = document.createElement('template');
 
-  template.innerHTML = `<div class="navbar-nav user-log ml-auto action-buttons">
-    <div class="nav-item dropdown">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">${data}</a>
-      <div class="dropdown-menu action-form log-out-form">
-        <form name="signup">
-          <input type="submit" class="btn btn-primary btn-block" value="Sign Out">
-        </form>
-        <p name="signout" class="paragraph"></p>
+  template.innerHTML = `
+    <div id="user-info" class="navbar-nav user-log ml-auto action-buttons">
+      <div class="nav-item dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">${data}</a>
+        <div class="dropdown-menu action-form log-out-form">
+          <input type="button" class="btn btn-primary btn-block" value="Sign Out">
+        </div>
       </div>
     </div>
-  </div>`;
+  `;
 
   document.querySelector('nav').appendChild(template.content.cloneNode(true));
+
+  document.querySelector('input[value="Sign Out"]').onclick = () =>
+    firebase.auth().signOut();
 }
 
 const dispatchErrorMsg = (target, msg) =>
@@ -31,10 +31,6 @@ async function authUser(method, credentials) {
           .auth()
           .signInWithEmailAndPassword(email, password);
         console.log(response);
-
-        if (response.user) {
-          displayUserData(response.user.email);
-        }
       } catch (err) {
         dispatchErrorMsg(method, err.message);
         throw new Error(err);
@@ -50,10 +46,6 @@ async function authUser(method, credentials) {
           .auth()
           .createUserWithEmailAndPassword(email, password);
         console.log(response);
-
-        if (response.user) {
-          displayUserData(response.user.email);
-        }
       } catch (err) {
         dispatchErrorMsg(method, err.message);
         throw new Error(err);
@@ -175,4 +167,23 @@ function initAnimations() {
 jQuery('document').ready(() => {
   initFirebase();
   initAnimations();
+
+  firebase.auth().onAuthStateChanged((user) => {
+    const authButtonsEl = document.querySelector('#auth-buttons');
+    const userInfoEl = document.querySelector('#user-info');
+
+    if (user) {
+      displayUserData(user.email);
+      if (authButtonsEl) {
+        authButtonsEl.setAttribute('hidden', '');
+      }
+    } else {
+      if (authButtonsEl) {
+        authButtonsEl.removeAttribute('hidden');
+      }
+      if (userInfoEl) {
+        userInfoEl.remove();
+      }
+    }
+  });
 });
