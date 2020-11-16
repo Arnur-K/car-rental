@@ -134,3 +134,24 @@ header {
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: none;
 }
+.user-log {
+  color: var(--headline-color);
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 497px) {
+  .navbar-toggler.collapsed {
+    order: 2;
+  }
+
+  .user-log {
+    order: 1;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .navbar .action-form {
+    height: 80px;
+    background-color: var(--bg-color) !important;
+  }
+}

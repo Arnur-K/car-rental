@@ -3,8 +3,16 @@ function displayUserData(data) {
 
   const template = document.createElement('template');
 
-  template.innerHTML = `<div class="navbar-nav ml-auto">
-    ${data}
+  template.innerHTML = `<div class="navbar-nav user-log ml-auto action-buttons">
+    <div class="nav-item dropdown">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">${data}</a>
+      <div class="dropdown-menu action-form">
+        <form name="signup">
+          <input type="submit" class="btn btn-primary btn-block" value="Sign Out">
+        </form>
+        <p name="signout" class="paragraph"></p>
+      </div>
+    </div>
   </div>`;
 
   document.querySelector('nav').appendChild(template.content.cloneNode(true));
