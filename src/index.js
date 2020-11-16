@@ -1,3 +1,82 @@
+function displayUserData(data) {
+  document.querySelector('#auth-buttons').setAttribute('hidden', '');
+
+  const template = document.createElement('template');
+
+  template.innerHTML = `<div class="navbar-nav ml-auto">
+    ${data}
+  </div>`;
+
+  document.querySelector('nav').appendChild(template.content.cloneNode(true));
+}
+
+const dispatchErrorMsg = (target, msg) =>
+  (document.querySelector(`p[name="${target}"]`).innerText = msg);
+
+async function authUser(method, credentials) {
+  const { email, password } = credentials;
+
+  switch (method) {
+    case 'login':
+      try {
+        const response = await firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password);
+        console.log(response);
+
+        if (response.user) {
+          displayUserData(response.user.email);
+        }
+      } catch (err) {
+        dispatchErrorMsg(method, err.message);
+        throw new Error(err);
+      }
+      break;
+
+    case 'signup':
+      if (password !== confirmedPassword) {
+        return dispatchErrorMsg(method, "Passwords don't match");
+      }
+      try {
+        const response = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password);
+        console.log(response);
+
+        if (response.user) {
+          displayUserData(response.user.email);
+        }
+      } catch (err) {
+        dispatchErrorMsg(method, err.message);
+        throw new Error(err);
+      }
+      break;
+
+    default:
+      throw new Error('Invalid auth method. Should be login or signup');
+  }
+}
+
+function initAuthForms() {
+  const authForms = document.querySelectorAll('form');
+
+  authForms.forEach((form) => {
+    form.onsubmit = (event) => {
+      event.preventDefault();
+
+      const authMethod = form.getAttribute('name');
+
+      const credentials = {};
+      const fields = form.querySelectorAll('*[name]');
+
+      fields.forEach((field) => {
+        credentials[field.getAttribute('name')] = field.value;
+      });
+      authUser(authMethod, credentials);
+    };
+  });
+}
+
 function initFirebase() {
   const firebaseConfig = {
     apiKey: 'AIzaSyDUO2rGdBWrCGeaK3MSTWR3LTHHya8khcg',
@@ -11,7 +90,8 @@ function initFirebase() {
 
   try {
     firebase.initializeApp(firebaseConfig);
-    console.log(firebase);
+
+    initAuthForms();
 
     const database = firebase.database();
     console.log(database);
