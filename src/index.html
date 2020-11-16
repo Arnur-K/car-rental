@@ -42,7 +42,7 @@
             <a href="#" class="nav-item nav-link">About Us</a>
             <a href="#" class="nav-item nav-link">Contact</a>
           </div>
-          <div class="navbar-nav ml-auto action-buttons">
+          <div id="auth-buttons" class="navbar-nav ml-auto action-buttons">
             <div class="nav-item dropdown">
               <a
                 href="#"
@@ -51,17 +51,19 @@
                 >Login</a
               >
               <div class="dropdown-menu action-form">
-                <form action="/examples/actions/confirmation.php" method="post">
+                <form name="login">
                   <div class="form-group">
                     <input
-                      type="text"
+                      name="email"
+                      type="email"
                       class="form-control"
-                      placeholder="Username"
+                      placeholder="Email"
                       required="required"
                     />
                   </div>
                   <div class="form-group">
                     <input
+                      name="password"
                       type="password"
                       class="form-control"
                       placeholder="Password"
@@ -77,6 +79,7 @@
                     <a href="#">Forgot Your password?</a>
                   </div>
                 </form>
+                <p name="login" class="paragraph" ></p>
               </div>
             </div>
             <div class="nav-item dropdown">
@@ -87,20 +90,22 @@
                 >Sign up</a
               >
               <div class="dropdown-menu action-form">
-                <form action="/examples/actions/confirmation.php" method="post">
+                <form name="signup">
                   <p class="hint-text"
                     >Fill in this form to create your account!</p
                   >
                   <div class="form-group">
                     <input
-                      type="text"
+                      name="email"
+                      type="email"
                       class="form-control"
-                      placeholder="Username"
+                      placeholder="Email"
                       required="required"
                     />
                   </div>
                   <div class="form-group">
                     <input
+                      name="password"
                       type="password"
                       class="form-control"
                       placeholder="Password"
@@ -109,6 +114,7 @@
                   </div>
                   <div class="form-group">
                     <input
+                      name="confirmedPassword"
                       type="password"
                       class="form-control"
                       placeholder="Confirm Password"
@@ -127,6 +133,8 @@
                     value="Sign up"
                   />
                 </form>
+                <p name="signup" class="paragraph" ></p>
+
               </div>
             </div>
           </div>
@@ -490,10 +498,15 @@
     </footer>
     <!-- Footer -->
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <!-- firebase -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
