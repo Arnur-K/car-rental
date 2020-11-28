@@ -1,0 +1,7 @@
+.rent-page {
+  padding-top: 40px;
+}
+
+.rent-page label {
+  color: var(--headline-color);
+}

@@ -176,3 +176,12 @@ jQuery('document').ready(() => {
   initFirebase();
   initAnimations();
 });
+
+$(".js-range-slider").ionRangeSlider({
+  type: "double",
+  min: 0,
+  max: 500,
+  from: 90,
+  to: 300,
+  grid: true
+});
