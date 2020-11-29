@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org/face/tt-norms-medium"
+      type="text/css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
+    <title>Car Rental</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a href="#" class="navbar-brand">Car<b>RENTAL</b></a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div
+          id="navbarCollapse"
+          class="collapse navbar-collapse justify-content-start"
+        >
+          <div class="navbar-nav">
+            <a href="#" class="nav-item nav-link">Home</a>
+            <a href="rent.html" class="nav-item nav-link">Rent</a>
+            <a href="#" class="nav-item nav-link">About Us</a>
+            <a href="#" class="nav-item nav-link">Contact</a>
+          </div>
+          <div id="auth-buttons" class="navbar-nav ml-auto action-buttons">
+            <div class="nav-item dropdown">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="nav-link dropdown-toggle mr-4"
+                >Login</a
+              >
+              <div class="dropdown-menu action-form">
+                <form name="login">
+                  <div class="form-group">
+                    <input
+                      name="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required="required"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required="required"
+                    />
+                  </div>
+                  <input
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                    value="Login"
+                  />
+                  <div class="text-center mt-2">
+                    <a href="#">Forgot Your password?</a>
+                  </div>
+                </form>
+                <p name="login" class="paragraph" ></p>
+              </div>
+            </div>
+            <div class="nav-item dropdown">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="btn btn-primary dropdown-toggle sign-up-btn"
+                >Sign up</a
+              >
+              <div class="dropdown-menu action-form">
+                <form name="signup">
+                  <p class="hint-text"
+                    >Fill in this form to create your account!</p
+                  >
+                  <div class="form-group">
+                    <input
+                      name="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required="required"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      name="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required="required"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      name="confirmedPassword"
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirm Password"
+                      required="required"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-check-label"
+                      ><input type="checkbox" required="required" /> I accept
+                      the <a href="#">Terms &amp; Conditions</a></label
+                    >
+                  </div>
+                  <input
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                    value="Sign up"
+                  />
+                </form>
+                <p name="signup" class="paragraph" ></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="rent-page">
+      <section class="booking-menu mt-5">
+        <div class="container">
+          <h1 class="title mb-4 text-center">Rent Your Car</h1>
+          <form>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label class="mr-sm-2" for="typeSelect">Type</label>
+                <select class="custom-select mr-sm-2" id="typeSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Economy</option>
+                  <option value="2">Standard</option>
+                  <option value="3">Business</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label class="mr-sm-2" for="brandSelect">Brand</label>
+                <select class="custom-select mr-sm-2" id="brandSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Mercedes</option>
+                  <option value="2">Nissan</option>
+                  <option value="3">Toyota</option>
+                  <option value="4">Fiat</option>
+                  <option value="5">Volkswagen</option>
+                  <option value="6">Opel</option>
+                  <option value="7">Lexus</option>
+                  <option value="8">Audi</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label class="mr-sm-2" for="fuelSelect">Fuel</label>
+                <select class="custom-select mr-sm-2" id="fuelSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Gasoline</option>
+                  <option value="2">Gas</option>
+                  <option value="3">Diesel</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label class="mr-sm-2" for="powerSelect">Power</label>
+                <select class="custom-select mr-sm-2" id="powerSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">1.4</option>
+                  <option value="2">1.6</option>
+                  <option value="3">1.8</option>
+                  <option value="4">2</option>
+                  <option value="5">2.2</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label class="mr-sm-2" for="colorSelect">Color</label>
+                <select class="custom-select mr-sm-2" id="colorSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">Grey</option>
+                  <option value="2">Blue</option>
+                  <option value="3">White</option>
+                  <option value="4">Red</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3 col-6">
+                <legend class="col-form-label pt-0">Air Conditioning</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridAir" id="gridAir1" value="option1">
+                    <label class="form-check-label" for="gridAir1">
+                      yes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridAir" id="gridAir2" value="option2">
+                    <label class="form-check-label" for="gridAir2">
+                      no
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-3 col-6">
+                <legend class="col-form-label pt-0">Transmission</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridTrans" id="gridTrans1" value="option1">
+                    <label class="form-check-label" for="gridTrans1">
+                      manual
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridTrans" id="gridTrans2" value="option2">
+                    <label class="form-check-label" for="gridTrans2">
+                      auto
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label class="mr-sm-2" for="seatsSelect">Seats</label>
+                <select class="custom-select mr-sm-2" id="seatsSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">4</option>
+                  <option value="2">5</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label class="mr-sm-2" for="baggageSelect">Baggage</label>
+                <select class="custom-select mr-sm-2" id="baggageSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label class="mr-sm-2" for="doorsSelect">Doors</label>
+                <select class="custom-select mr-sm-2" id="doorsSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">3</option>
+                  <option value="2">4</option>
+                  <option value="3">5</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row mt-3">
+              <div class="form-group col-md-6">
+                <label class="control-label pr-4" for="rentDate">Rent Date</label>
+                <input type="date" id="rentDate" name="rentDate" value="2018-07-22" min="2020-11-01" max="2029-12-31">
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label pr-4" for="returnDate">Return Date</label>
+                <input type="date" id="returnDate" name="returnDate" value="2018-07-22" min="2020-11-01" max="2029-12-31">
+              </div>
+              </div>
+            </div>
+            <div class="mt-5 pr-3 pl-3 text-center">
+              <label class="control-label mb-4" for="priceSelector">Select the price</label>
+              <input type="text" id="priceSelector" class="js-range-slider" name="my_range" value="" />
+            </div>
+            <div class="text-center">
+              <button type="submit" class="button-primary mt-5">Search</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="cars mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
+              <div class="car-card text-center pt-3 pb-3">
+                <div class="img-container">
+                  <img
+                    class="car-image"
+                    src="./img/opel-corsa.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="car-info mt-3">
+                  <h4 class="car-name">Opel Corsa</h4>
+                  <p class="car-type mt-3">Economy</p>
+                  <p class="car-price mt-3">90,11$</p>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="button-primary mt-3">Rent</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
+              <div class="car-card text-center pt-3 pb-3">
+                <div class="img-container">
+                  <img
+                    class="car-image"
+                    src="./img/opel-corsa.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="car-info mt-3">
+                  <h4 class="car-name">Opel Corsa</h4>
+                  <p class="car-type mt-3">Economy</p>
+                  <p class="car-price mt-3">90,11$</p>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="button-primary mt-3">Rent</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
+              <div class="car-card text-center pt-3 pb-3">
+                <div class="img-container">
+                  <img
+                    class="car-image"
+                    src="./img/opel-corsa.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="car-info mt-3">
+                  <h4 class="car-name">Opel Corsa</h4>
+                  <p class="car-type mt-3">Economy</p>
+                  <p class="car-price mt-3">90,11$</p>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="button-primary mt-3">Rent</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="page-footer font-small blue pt-4 mt-5"
+      data-aos="fade-up"
+      data-aos-delay="100"
+      data-aos-duration="600"
+    >
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left">
+        <!-- Grid row -->
+        <div class="row text-center">
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+            <!-- Content -->
+            <a href="#"
+              ><h5 class="navbar-brand">Car<b>RENTAL</b></h5></a
+            >
+            <p class="paragraph"
+              >Here you can use rows and columns to organize your footer
+              content.</p
+            >
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none pb-3" />
+
+          <!-- Grid column -->
+          <div class="col-md-6 mb-md-0 mb-3">
+            <!-- Links -->
+            <h5 class="">Menu</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Home</a>
+              </li>
+              <li>
+                <a href="rent.html">Rent</a>
+              </li>
+              <li>
+                <a href="#!">About Us</a>
+              </li>
+              <li>
+                <a href="#!">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3"
+        >© 2020 Copyright:
+        <a href="#"> CarRENTAL</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <!-- firebase -->
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

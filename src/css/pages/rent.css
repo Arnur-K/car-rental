@@ -1,0 +1,16 @@
+.rent-page {
+  padding-top: 40px;
+}
+
+.rent-page label {
+  color: var(--headline-color);
+}
+
+.rent-page .car-card {
+  background-color: white;
+  border-radius: 25px;
+}
+
+.rent-page .car-image {
+  max-width: 100%;
+}
