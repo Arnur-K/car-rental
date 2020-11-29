@@ -52,9 +52,9 @@ function onCars(cars) {
       const rowEl = document.createElement('div');
       rowEl.classList.add('row');
 
-      for (let i = 0; i < 1 + index; i++) {
-        rowEl.appendChild(cardElements[i].content.cloneNode(true));
-      }
+      rowEl.appendChild(cardElements[index - 1].content.cloneNode(true));
+      rowEl.appendChild(cardElements[index - 2].content.cloneNode(true));
+      rowEl.appendChild(cardElements[index].content.cloneNode(true));
 
       container.appendChild(rowEl);
     }
