@@ -1,4 +1,4 @@
-function displayUserData(data) {
+function onUser(data) {
   const template = document.createElement('template');
 
   template.innerHTML = `
@@ -18,8 +18,9 @@ function displayUserData(data) {
     firebase.auth().signOut();
 }
 
-const dispatchErrorMsg = (target, msg) =>
-  (document.querySelector(`p[name="${target}"]`).innerText = msg);
+function onErrorMsg(target, msg) {
+  document.querySelector(`p[name="${target}"]`).innerText = msg;
+}
 
 async function authUser(method, credentials) {
   const { email, password, confirmedPassword } = credentials;
@@ -32,14 +33,14 @@ async function authUser(method, credentials) {
           .signInWithEmailAndPassword(email, password);
         console.log(response);
       } catch (err) {
-        dispatchErrorMsg(method, err.message);
+        onErrorMsg(method, err.message);
         throw new Error(err);
       }
       break;
 
     case 'signup':
       if (password !== confirmedPassword) {
-        return dispatchErrorMsg(method, "Passwords don't match");
+        return onErrorMsg(method, "Passwords don't match");
       }
       try {
         const response = await firebase
@@ -47,7 +48,7 @@ async function authUser(method, credentials) {
           .createUserWithEmailAndPassword(email, password);
         console.log(response);
       } catch (err) {
-        dispatchErrorMsg(method, err.message);
+        onErrorMsg(method, err.message);
         throw new Error(err);
       }
       break;
@@ -173,7 +174,7 @@ jQuery('document').ready(() => {
     const userInfoEl = document.querySelector('#user-info');
 
     if (user) {
-      displayUserData(user.email);
+      onUser(user.email);
       if (authButtonsEl) {
         authButtonsEl.setAttribute('hidden', '');
       }
