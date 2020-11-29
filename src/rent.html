@@ -183,7 +183,6 @@
                   <option selected>Choose...</option>
                   <option value="1">Gasoline</option>
                   <option value="2">Gas</option>
-                  <option value="3">Diesel</option>
                 </select>
               </div>
               <div class="form-group col-6">
@@ -249,8 +248,10 @@
                 <label class="mr-sm-2" for="seatsSelect">Seats</label>
                 <select class="custom-select mr-sm-2" id="seatsSelect">
                   <option selected>Choose...</option>
-                  <option value="1">4</option>
-                  <option value="2">5</option>
+                  <option value="1">2</option>
+                  <option value="2">3</option>
+                  <option value="3">4</option>
+                  <option value="4">5</option>
                 </select>
               </div>
               <div class="form-group col-6">
@@ -297,66 +298,7 @@
       </section>
 
       <section class="cars mt-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
-              <div class="car-card text-center pt-3 pb-3">
-                <div class="img-container">
-                  <img
-                    class="car-image"
-                    src="./img/opel-corsa.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="car-info mt-3">
-                  <h4 class="car-name">Opel Corsa</h4>
-                  <p class="car-type mt-3">Economy</p>
-                  <p class="car-price mt-3">90,11$</p>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="button-primary mt-3">Rent</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
-              <div class="car-card text-center pt-3 pb-3">
-                <div class="img-container">
-                  <img
-                    class="car-image"
-                    src="./img/opel-corsa.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="car-info mt-3">
-                  <h4 class="car-name">Opel Corsa</h4>
-                  <p class="car-type mt-3">Economy</p>
-                  <p class="car-price mt-3">90,11$</p>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="button-primary mt-3">Rent</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
-              <div class="car-card text-center pt-3 pb-3">
-                <div class="img-container">
-                  <img
-                    class="car-image"
-                    src="./img/opel-corsa.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="car-info mt-3">
-                  <h4 class="car-name">Opel Corsa</h4>
-                  <p class="car-type mt-3">Economy</p>
-                  <p class="car-price mt-3">90,11$</p>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="button-primary mt-3">Rent</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="container" id="cars-cards-container">
         </div>
       </section>
     </main>
@@ -447,6 +389,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="./firebase.js"></script>
+    <script src="./rent.js"></script>
   </body>
 </html>

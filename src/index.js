@@ -31,7 +31,7 @@ async function authUser(method, credentials) {
         const response = await firebase
           .auth()
           .signInWithEmailAndPassword(email, password);
-        console.log(response);
+        console.log('function authUser login response: ', response);
       } catch (err) {
         onErrorMsg(method, err.message);
         throw new Error(err);
@@ -46,7 +46,7 @@ async function authUser(method, credentials) {
         const response = await firebase
           .auth()
           .createUserWithEmailAndPassword(email, password);
-        console.log(response);
+        console.log('function authUser signup response: ', response);
       } catch (err) {
         onErrorMsg(method, err.message);
         throw new Error(err);
@@ -77,29 +77,6 @@ function initAuthForms() {
       authUser(authMethod, credentials);
     };
   });
-}
-
-function initFirebase() {
-  const firebaseConfig = {
-    apiKey: 'AIzaSyDUO2rGdBWrCGeaK3MSTWR3LTHHya8khcg',
-    authDomain: 'car-rental-eec8c.firebaseapp.com',
-    databaseURL: 'https://car-rental-eec8c.firebaseio.com',
-    projectId: 'car-rental-eec8c',
-    storageBucket: 'car-rental-eec8c.appspot.com',
-    messagingSenderId: '198736107539',
-    appId: '1:198736107539:web:a615c6b39ff069687d07e6',
-  };
-
-  try {
-    firebase.initializeApp(firebaseConfig);
-
-    initAuthForms();
-
-    const database = firebase.database();
-    console.log(database);
-  } catch (err) {
-    console.error(err);
-  }
 }
 
 function initAnimations() {
@@ -167,6 +144,7 @@ function initAnimations() {
 
 jQuery('document').ready(() => {
   initFirebase();
+  initAuthForms();
   initAnimations();
 
   firebase.auth().onAuthStateChanged((user) => {
@@ -187,13 +165,4 @@ jQuery('document').ready(() => {
       }
     }
   });
-});
-
-$(".js-range-slider").ionRangeSlider({
-  type: "double",
-  min: 0,
-  max: 500,
-  from: 90,
-  to: 300,
-  grid: true
 });
