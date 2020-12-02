@@ -1,4 +1,8 @@
+let isInitialized = false;
+
 function initFirebase() {
+  if (isInitialized) return;
+
   const firebaseConfig = {
     apiKey: 'AIzaSyDUO2rGdBWrCGeaK3MSTWR3LTHHya8khcg',
     authDomain: 'car-rental-eec8c.firebaseapp.com',
@@ -11,6 +15,7 @@ function initFirebase() {
 
   try {
     firebase.initializeApp(firebaseConfig);
+    isInitialized = true;
   } catch (err) {
     console.error(err);
   }

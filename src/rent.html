@@ -17,9 +17,14 @@
       type="text/css"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
+    />
 
     <title>Car Rental</title>
   </head>
@@ -55,7 +60,7 @@
                 >Login</a
               >
               <div class="dropdown-menu action-form">
-                <form name="login">
+                <form id="login-form" name="login">
                   <div class="form-group">
                     <input
                       name="email"
@@ -83,7 +88,7 @@
                     <a href="#">Forgot Your password?</a>
                   </div>
                 </form>
-                <p name="login" class="paragraph" ></p>
+                <p name="login" class="paragraph"></p>
               </div>
             </div>
             <div class="nav-item dropdown">
@@ -94,7 +99,7 @@
                 >Sign up</a
               >
               <div class="dropdown-menu action-form">
-                <form name="signup">
+                <form id="signup-form" name="signup">
                   <p class="hint-text"
                     >Fill in this form to create your account!</p
                   >
@@ -137,8 +142,7 @@
                     value="Sign up"
                   />
                 </form>
-                <p name="signup" class="paragraph" ></p>
-
+                <p name="signup" class="paragraph"></p>
               </div>
             </div>
           </div>
@@ -148,23 +152,43 @@
 
     <main class="rent-page">
       <section class="booking-menu mt-5">
-        <div class="container">
+        <div class="container" >
           <h1 class="title mb-4 text-center">Rent Your Car</h1>
-          <form>
+
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label class="mr-sm-2" for="type">Filter by</label>
+              <select
+                class="custom-select mr-sm-2"
+                id="main-select"
+                name="type"
+              >
+                <option>Type</option>
+                <option>Brand</option>
+                <option>Fuel</option>
+                <option>Color</option>
+              </select>
+            </div>
+          </div>
+
+          <form id="filters-form">
             <div class="form-row">
-              <div class="form-group col-6">
-                <label class="mr-sm-2" for="typeSelect">Type</label>
-                <select class="custom-select mr-sm-2" id="typeSelect">
-                  <option selected>Choose...</option>
+              <div class="form-group col-12" name="type-div">
+                <label class="mr-sm-2" for="type">Type</label>
+                <select class="custom-select mr-sm-2" id="type-select" name="type">
                   <option value="Economy">Economy</option>
                   <option value="Standard">Standard</option>
                   <option value="Business">Business</option>
                 </select>
               </div>
-              <div class="form-group col-6">
+
+              <div class="form-group col-12" name="brand-div" hidden>
                 <label class="mr-sm-2" for="brandSelect">Brand</label>
-                <select class="custom-select mr-sm-2" id="brandSelect">
-                  <option selected>Choose...</option>
+                <select
+                  class="custom-select mr-sm-2"
+                  id="brandSelect"
+                  name="brand"
+                >
                   <option value="Mercedes">Mercedes</option>
                   <option value="Nissan">Nissan</option>
                   <option value="Toyota">Toyota</option>
@@ -177,87 +201,58 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-6">
-                <label class="mr-sm-2" for="fuelSelect">Fuel</label>
-                <select class="custom-select mr-sm-2" id="fuelSelect">
-                  <option selected>Choose...</option>
+              <div class="form-group col-12" name="fuel-div" hidden>
+                <label class="mr-sm-2" for="fuel">Fuel</label>
+                <select class="custom-select mr-sm-2" name="fuel">
                   <option value="Gasoline">Gasoline</option>
                   <option value="Gas">Gas</option>
                 </select>
               </div>
-              <div class="form-group col-6">
-                <label class="mr-sm-2" for="powerSelect">Power</label>
-                <select class="custom-select mr-sm-2" id="powerSelect">
-                  <option selected>Choose...</option>
+              <!-- <div class="form-group col-12" name="power-div" hidden>
+                <label class="mr-sm-2" for="power">Power</label>
+                <select class="custom-select mr-sm-2" name="power">
                   <option value="1.4">1.4</option>
                   <option value="1.6">1.6</option>
                   <option value="1.8">1.8</option>
                   <option value="2">2</option>
                   <option value="2.2">2.2</option>
                 </select>
-              </div>
+              </div> -->
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label class="mr-sm-2" for="colorSelect">Color</label>
-                <select class="custom-select mr-sm-2" id="colorSelect">
-                  <option selected>Choose...</option>
+              <div class="form-group col-md-12" name="color-div" hidden>
+                <label class="mr-sm-2" for="color">Color</label>
+                <select class="custom-select mr-sm-2" name="color">
                   <option value="Grey">Grey</option>
                   <option value="Blue">Blue</option>
                   <option value="White">White</option>
                   <option value="Red">Red</option>
                 </select>
               </div>
-              <div class="form-group col-md-3 col-6">
-                <legend class="col-form-label pt-0">Air Conditioning</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridAir" id="gridAir1" value="option1">
-                    <label class="form-check-label" for="gridAir1">
-                      yes
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridAir" id="gridAir2" value="option2">
-                    <label class="form-check-label" for="gridAir2">
-                      no
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group col-md-3 col-6">
-                <legend class="col-form-label pt-0">Transmission</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridTrans" id="gridTrans1" value="option1">
-                    <label class="form-check-label" for="gridTrans1">
-                      manual
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridTrans" id="gridTrans2" value="option2">
-                    <label class="form-check-label" for="gridTrans2">
-                      auto
-                    </label>
-                  </div>
-                </div>
+              <!-- 
+              <div class="form-group col-md-12" name="doors-div" hidden>
+                <label class="mr-sm-2" for="doors">Doors</label>
+                <select class="custom-select mr-sm-2" name="doors">
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-6">
+              <div class="form-group col-12" name="seats-div" hidden>
                 <label class="mr-sm-2" for="seatsSelect">Seats</label>
-                <select class="custom-select mr-sm-2" id="seatsSelect">
-                  <option selected>Choose...</option>
-                  <option value="1">2</option>
-                  <option value="2">3</option>
-                  <option value="3">4</option>
-                  <option value="4">5</option>
+                <select
+                  class="custom-select mr-sm-2"
+                  id="seatsSelect"
+                  name="seats"
+                >
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
-              <div class="form-group col-6">
-                <label class="mr-sm-2" for="baggageSelect">Baggage</label>
-                <select class="custom-select mr-sm-2" id="baggageSelect">
-                  <option selected>Choose...</option>
+              <div class="form-group col-12" name="baggage-div" hidden>
+                <label class="mr-sm-2" for="baggage">Baggage</label>
+                <select class="custom-select mr-sm-2" name="baggage">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -265,40 +260,82 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-12">
-                <label class="mr-sm-2" for="doorsSelect">Doors</label>
-                <select class="custom-select mr-sm-2" id="doorsSelect">
-                  <option selected>Choose...</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+              <div
+                class="form-group col-md-3 col-12"
+                name="transmission-div"
+                hidden
+              >
+                <legend class="col-form-label pt-0">Transmission</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="manual"
+                    />
+                    <label class="form-check-label" for="manual">
+                      manual
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="auto"
+                    />
+                    <label class="form-check-label" for="auto">auto</label>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="form-row mt-3">
+            </div> -->
+            <!-- <div class="form-row mt-3">
               <div class="form-group col-md-6">
-                <label class="control-label pr-4" for="rentDate">Rent Date</label>
-                <input type="date" id="rentDate" name="rentDate" value="2018-07-22" min="2020-11-01" max="2029-12-31">
+                <label class="control-label pr-4" for="rentDate"
+                  >Rent Date</label
+                >
+                <input
+                  type="date"
+                  id="rentDate"
+                  name="rentDate"
+                  max="2029-12-31"
+                />
               </div>
               <div class="form-group col-md-6">
-                <label class="control-label pr-4" for="returnDate">Return Date</label>
-                <input type="date" id="returnDate" name="returnDate" value="2018-07-22" min="2020-11-01" max="2029-12-31">
+                <label class="control-label pr-4" for="returnDate"
+                  >Return Date</label
+                >
+                <input
+                  type="date"
+                  id="returnDate"
+                  name="returnDate"
+                  max="2029-12-31"
+                />
               </div>
-              </div>
-            </div>
-            <div class="mt-5 pr-3 pl-3 text-center">
-              <label class="control-label mb-4" for="priceSelector">Select the price</label>
-              <input type="text" id="priceSelector" class="js-range-slider" name="my_range" value="" />
-            </div>
+            </div> -->
+            <!-- <div class="mt-5 pr-3 pl-3 text-center" name="price-div">
+              <label class="control-label mb-4" for="priceRange"
+                >Select the price</label
+              >
+              <input
+                type="text"
+                class="js-range-slider"
+                id="price-range"
+                name="priceRange"
+              />
+            </div> -->
             <div class="text-center">
-              <button type="submit" class="button-primary mt-5">Search</button>
+              <button type="submit" class="button-primary mt-5">Filter</button>
             </div>
           </form>
         </div>
       </section>
 
       <section class="cars mt-5">
-        <div class="container" id="cars-cards-container"></div>
+        <div 
+          class="container" 
+          id="cars-cards-container" 
+          style="display: flex; flex-wrap: wrap;"
+        ></div>
       </section>
     </main>
 
@@ -389,6 +426,7 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
     <script src="./firebase.js"></script>
+    <script src="./auth.js"></script>
     <script src="./rent.js"></script>
   </body>
 </html>

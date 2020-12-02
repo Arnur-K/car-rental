@@ -1,3 +1,6 @@
+let KEY = null;
+let VALUE = null;
+
 function initRangeSlider() {
   $('.js-range-slider').ionRangeSlider({
     type: 'double',
@@ -25,7 +28,7 @@ function getCardElement(img, name, type, price) {
         <div class="car-info mt-3">
           <h4 class="car-name">${name}</h4>
           <p class="car-type mt-3">${type.toUpperCase()}</p>
-          <p class="car-price mt-3">${price} PLN</p>
+          <p class="car-price mt-3">${price} PLN/day</p>
         </div>
         <div class="text-center">
           <button type="submit" class="button-primary mt-3">Rent</button>
@@ -38,31 +41,46 @@ function getCardElement(img, name, type, price) {
 }
 
 function onCars(cars) {
+  if (!cars) return;
+
   if (typeof cars === 'object') {
     cars = Object.values(cars);
   }
 
   const container = document.getElementById('cars-cards-container');
-  const cardElements = [];
+  container.innerHTML = '';
 
-  cars.forEach((car, index) => {
-    cardElements.push(getCardElement(car.img, car.name, car.type, car.price));
-
-    if ((1 + index) % 3 === 0) {
-      const rowEl = document.createElement('div');
-      rowEl.classList.add('row');
-
-      rowEl.appendChild(cardElements[index - 1].content.cloneNode(true));
-      rowEl.appendChild(cardElements[index - 2].content.cloneNode(true));
-      rowEl.appendChild(cardElements[index].content.cloneNode(true));
-
-      container.appendChild(rowEl);
-    }
-  });
+  cars.forEach((car) =>
+    container.appendChild(
+      getCardElement(car.img, car.name, car.type, car.price).content.cloneNode(
+        true,
+      ),
+    ),
+  );
 }
 
 async function fetchCars() {
   const type = new URLSearchParams(window.location.search).get('type');
+
+  if (KEY && VALUE) {
+    KEY = KEY.toLowerCase();
+    if (typeof VALUE === 'string') VALUE = VALUE.toLowerCase();
+
+    try {
+      const cars = await firebase
+        .database()
+        .ref('cars')
+        .orderByChild(KEY)
+        .equalTo(VALUE)
+        .once('value');
+
+      onCars(cars.val());
+    } catch (err) {
+      console.error(err);
+    }
+
+    return;
+  }
 
   if (!!type) {
     try {
@@ -89,8 +107,53 @@ async function fetchCars() {
   }
 }
 
+function initFields() {
+  const mainSelect = document.getElementById('main-select');
+  const filtersForm = document.getElementById('filters-form');
+  const filtersFormDivElements = filtersForm.querySelectorAll('div[name]');
+
+  mainSelect.onchange = ({ target }) => {
+    filtersFormDivElements.forEach((div) => {
+      if (!div.hasAttribute('hidden')) {
+        div.setAttribute('hidden', '');
+      }
+    });
+
+    const value = target.value.trim().toLowerCase().replace(' ', '-');
+    const selectedDiv = filtersForm.querySelector(`div[name="${value}-div"]`);
+
+    if (!!selectedDiv.querySelector('select')) {
+      selectedDiv.querySelector('select').onchange = (event) => {
+        KEY = target.value;
+        VALUE = event.target.value;
+      };
+    }
+
+    selectedDiv.toggleAttribute('hidden');
+  };
+
+  document.getElementById('type-select').onchange = (event) => {
+    KEY = 'type';
+    VALUE = event.target.value;
+  };
+
+  filtersForm.onsubmit = (event) => {
+    event.preventDefault();
+
+    filtersFormDivElements.forEach((div) => {
+      if (!div.hasAttribute('hidden')) {
+        KEY = div.querySelector('select').name;
+        VALUE = div.querySelector('select').value;
+      }
+    });
+
+    fetchCars();
+  };
+}
+
 jQuery('document').ready(() => {
   initFirebase();
+  initFields();
   initRangeSlider();
   fetchCars();
 });
