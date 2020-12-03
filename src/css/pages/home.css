@@ -138,9 +138,14 @@ body {
 }
 
 .card-image {
-  max-width: 250px;
+  width: 210px;
   position: absolute;
-  top: -60px;
+  top: -70px;
+  left: 170px;
+}
+
+.card-container:last-child .card-image{
+  top: -90px !important;
 }
 
 .price-card {
@@ -318,4 +323,8 @@ body {
 
 .carousel-item .paragraph {
   color: var(--headline-color);
+}
+
+#rentDate, #returnDate {
+  width: 100%;
 }
