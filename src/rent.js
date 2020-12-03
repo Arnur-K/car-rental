@@ -31,7 +31,7 @@ function getCardElement(img, name, type, price) {
           <p class="car-price mt-3">${price} PLN/day</p>
         </div>
         <div class="text-center">
-          <button type="submit" class="button-primary mt-3">Rent</button>
+          <button type="button" class="button-primary mt-3 button-rent">Rent</button>
         </div>
       </div>
     </div>
@@ -56,6 +56,15 @@ function onCars(cars) {
         true,
       ),
     ),
+  );
+
+  document.querySelectorAll('.button-rent').forEach(
+    (btn) =>
+      (btn.onclick = () => {
+        if (!firebase.auth().currentUser) {
+          alert('Login to your account to rent');
+        }
+      }),
   );
 }
 
