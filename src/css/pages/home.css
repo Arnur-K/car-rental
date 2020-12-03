@@ -324,3 +324,7 @@ body {
 .carousel-item .paragraph {
   color: var(--headline-color);
 }
+
+#rentDate, #returnDate {
+  width: 100%;
+}
