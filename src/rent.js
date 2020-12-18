@@ -1,5 +1,5 @@
-let KEY = null;
-let VALUE = null;
+let KEY = null,
+  VALUE = null;
 
 function initRangeSlider() {
   $('.js-range-slider').ionRangeSlider({
@@ -30,8 +30,20 @@ function getCardElement(img, name, type, price) {
           <p class="car-type mt-3">${type.toUpperCase()}</p>
           <p class="car-price mt-3">${price} PLN/day</p>
         </div>
-        <div class="text-center">
-          <button type="button" class="button-primary mt-3 button-rent">Rent</button>
+        <div class="text-center card-button-container">
+          ${
+            firebase.auth().currentUser
+              ? `<button
+                type='button'
+                data-toggle='modal'
+                data-target='#rent-popup'
+                class='button-primary mt-3 button-rent'
+                button-rent
+              >
+                Rent
+              </button>`
+              : 'Log in to your account to rent'
+          }
         </div>
       </div>
     </div>
@@ -50,22 +62,16 @@ function onCars(cars) {
   const container = document.getElementById('cars-cards-container');
   container.innerHTML = '';
 
-  cars.forEach((car) =>
-    container.appendChild(
-      getCardElement(car.img, car.name, car.type, car.price).content.cloneNode(
-        true,
-      ),
-    ),
-  );
+  cars.forEach((car) => {
+    const cardElement = getCardElement(
+      car.img,
+      car.name,
+      car.type,
+      car.price,
+    ).content.cloneNode(true);
 
-  document.querySelectorAll('.button-rent').forEach(
-    (btn) =>
-      (btn.onclick = () => {
-        if (!firebase.auth().currentUser) {
-          alert('Login to your account to rent');
-        }
-      }),
-  );
+    container.appendChild(cardElement);
+  });
 }
 
 async function fetchCars() {
@@ -120,6 +126,15 @@ function initFields() {
   const mainSelect = document.getElementById('main-select');
   const filtersForm = document.getElementById('filters-form');
   const filtersFormDivElements = filtersForm.querySelectorAll('div[name]');
+
+  const rentDateInput = document.getElementById('rentDate');
+  const returnDateInput = document.getElementById('returnDate');
+  const datesSubmitButton = document.getElementById('datesSubmit');
+
+  datesSubmitButton.onclick = () => {
+    const rentDate = rentDateInput.value
+    const returnDate = 
+  };
 
   mainSelect.onchange = ({ target }) => {
     filtersFormDivElements.forEach((div) => {

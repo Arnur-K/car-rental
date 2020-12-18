@@ -14,8 +14,24 @@ function onUser(data) {
 
   document.querySelector('nav').appendChild(template.content.cloneNode(true));
 
-  document.querySelector('input[value="Sign Out"]').onclick = () =>
+  document.querySelectorAll('.card-button-container').forEach((el) => {
+    el.innerHTML = `<button
+      type='button'
+      data-toggle='modal'
+      data-target='#rent-popup'
+      class='button-primary mt-3 button-rent'
+      button-rent
+    >
+      Rent
+    </button>`;
+  });
+
+  document.querySelector('input[value="Sign Out"]').onclick = () => {
     firebase.auth().signOut();
+    document.querySelectorAll('.card-button-container').forEach((el) => {
+      el.innerHTML = 'Login to your account to rent';
+    });
+  };
 }
 
 function onErrorMsg(target, msg) {

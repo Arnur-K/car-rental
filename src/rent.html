@@ -31,7 +31,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <a href="#" class="navbar-brand">Car<b>RENTAL</b></a>
+        <a href="index.html" class="navbar-brand">Car<b>RENTAL</b></a>
         <button
           type="button"
           class="navbar-toggler"
@@ -84,9 +84,9 @@
                     class="btn btn-primary btn-block"
                     value="Login"
                   />
-                  <div class="text-center mt-2">
+                  <!-- <div class="text-center mt-2">
                     <a href="#">Forgot Your password?</a>
-                  </div>
+                  </div> -->
                 </form>
                 <p name="login" class="paragraph"></p>
               </div>
@@ -208,16 +208,6 @@
                   <option value="Gas">Gas</option>
                 </select>
               </div>
-              <!-- <div class="form-group col-12" name="power-div" hidden>
-                <label class="mr-sm-2" for="power">Power</label>
-                <select class="custom-select mr-sm-2" name="power">
-                  <option value="1.4">1.4</option>
-                  <option value="1.6">1.6</option>
-                  <option value="1.8">1.8</option>
-                  <option value="2">2</option>
-                  <option value="2.2">2.2</option>
-                </select>
-              </div> -->
             </div>
             <div class="form-row">
               <div class="form-group col-md-12" name="color-div" hidden>
@@ -229,103 +219,9 @@
                   <option value="Red">Red</option>
                 </select>
               </div>
-              <!-- 
-              <div class="form-group col-md-12" name="doors-div" hidden>
-                <label class="mr-sm-2" for="doors">Doors</label>
-                <select class="custom-select mr-sm-2" name="doors">
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+              <div class="text-center">
+                <button type="submit" class="button-primary mt-5">Filter</button>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-12" name="seats-div" hidden>
-                <label class="mr-sm-2" for="seatsSelect">Seats</label>
-                <select
-                  class="custom-select mr-sm-2"
-                  id="seatsSelect"
-                  name="seats"
-                >
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-              <div class="form-group col-12" name="baggage-div" hidden>
-                <label class="mr-sm-2" for="baggage">Baggage</label>
-                <select class="custom-select mr-sm-2" name="baggage">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div
-                class="form-group col-md-3 col-12"
-                name="transmission-div"
-                hidden
-              >
-                <legend class="col-form-label pt-0">Transmission</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="manual"
-                    />
-                    <label class="form-check-label" for="manual">
-                      manual
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="auto"
-                    />
-                    <label class="form-check-label" for="auto">auto</label>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- <div class="form-row mt-3">
-              <div class="form-group col-md-6">
-                <label class="control-label pr-4" for="rentDate"
-                  >Rent Date</label
-                >
-                <input
-                  type="date"
-                  id="rentDate"
-                  name="rentDate"
-                  max="2029-12-31"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label class="control-label pr-4" for="returnDate"
-                  >Return Date</label
-                >
-                <input
-                  type="date"
-                  id="returnDate"
-                  name="returnDate"
-                  max="2029-12-31"
-                />
-              </div>
-            </div> -->
-            <!-- <div class="mt-5 pr-3 pl-3 text-center" name="price-div">
-              <label class="control-label mb-4" for="priceRange"
-                >Select the price</label
-              >
-              <input
-                type="text"
-                class="js-range-slider"
-                id="price-range"
-                name="priceRange"
-              />
-            </div> -->
-            <div class="text-center">
-              <button type="submit" class="button-primary mt-5">Filter</button>
-            </div>
           </form>
         </div>
       </section>
@@ -336,93 +232,42 @@
           id="cars-cards-container" 
           style="display: flex; flex-wrap: wrap;"
         ></div>
-        <!-- <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
-              <div class="car-card text-center pt-3 pb-3">
-                <div class="img-container">
-                  <img
-                    class="car-image"
-                    src="./img/opel-corsa.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="car-info mt-3">
-                  <h4 class="car-name">Opel Corsa</h4>
-                  <p class="car-type mt-3">Economy</p>
-                  <p class="car-price mt-3">90,11$</p>
-                </div>
-                <div class="text-center">
-                  <button type="button" data-toggle="modal" data-target="#rent-popup" class="button-primary mt-3">Rent</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
-              <div class="car-card text-center pt-3 pb-3">
-                <div class="img-container">
-                  <img
-                    class="car-image"
-                    src="./img/opel-corsa.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="car-info mt-3">
-                  <h4 class="car-name">Opel Corsa</h4>
-                  <p class="car-type mt-3">Economy</p>
-                  <p class="car-price mt-3">90,11$</p>
-                </div>
-                <div class="text-center">
-                  <button type="button" data-toggle="modal" data-target="#rent-popup" class="button-primary mt-3">Rent</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12 mt-5 car-container">
-              <div class="car-card text-center pt-3 pb-3">
-                <div class="img-container">
-                  <img
-                    class="car-image"
-                    src="./img/opel-corsa.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="car-info mt-3">
-                  <h4 class="car-name">Opel Corsa</h4>
-                  <p class="car-type mt-3">Economy</p>
-                  <p class="car-price mt-3">90,11$</p>
-                </div>
-                <div class="text-center">
-                  <button type="button" data-toggle="modal" data-target="#rent-popup" class="button-primary mt-3">Rent</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </section>
+
+
+
       <div class="modal fade" id="rent-popup" tabindex="-1" role="dialog" aria-labelledby="rent-popup" aria-hidden="true">
         <div class="modal-dialog" role="document">
+
           <div class="modal-content">
+
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Rent a car</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+
             <div class="modal-body">
               <div class="form-row mt-3">
+
                 <div class="form-group col-md-6">
                   <label class="control-label popup-label pr-4" for="rentDate">Rent Date</label>
                   <input type="date" id="rentDate" name="rentDate" value="2018-07-22" min="2020-11-01" max="2029-12-31">
                 </div>
+
                 <div class="form-group col-md-6">
                   <label class="control-label popup-label pr-4" for="returnDate">Return Date</label>
                   <input type="date" id="returnDate" name="returnDate" value="2018-07-22" min="2020-11-01" max="2029-12-31">
                 </div>
+
               </div>
+
               <div class="text-center">
                 <button type="button" class="button-primary popup-btn mt-3 mb-3 mr-3" data-dismiss="modal">Close</button>
-                <button type="button" class="button-primary popup-btn mt-3 mb-3">Submit</button>
+                <button type="button" class="button-primary popup-btn mt-3 mb-3" id="datesSubmit">Submit</button>
               </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -481,10 +326,10 @@
       </div>
       <!-- Footer Links -->
 
-      <!-- Copyright -->
+      <!-- Copyright --> 
       <div class="footer-copyright text-center py-3"
         >© 2020 Copyright:
-        <a href="#"> CarRENTAL</a>
+        <a href="index.html"> CarRENTAL</a>
       </div>
       <!-- Copyright -->
     </footer>
