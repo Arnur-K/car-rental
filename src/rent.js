@@ -12,7 +12,7 @@ function initRangeSlider() {
   });
 }
 
-function getCardElement(img, name, type, price) {
+function getCardElement(img, name, type, price, returnDate) {
   const template = document.createElement('template');
 
   template.innerHTML = `
@@ -29,8 +29,15 @@ function getCardElement(img, name, type, price) {
           <h4 class="car-name">${name}</h4>
           <p class="car-type mt-3">${type.toUpperCase()}</p>
           <p class="car-price mt-3">${price} PLN/day</p>
+          ${
+            !!returnDate
+              ? `<p class='car-return-date mt-3'>Available after ${new Date(returnDate).toLocaleDateString()}</p>`
+              : ''
+          }
         </div>
-        <div class="text-center card-button-container">
+        ${
+          !returnDate
+            ? `<div class="text-center card-button-container">
           ${
             firebase.auth().currentUser
               ? `<button
@@ -44,7 +51,9 @@ function getCardElement(img, name, type, price) {
               </button>`
               : 'Log in to your account to rent'
           }
-        </div>
+        </div>`
+            : ''
+        }
       </div>
     </div>
   `;
@@ -54,22 +63,15 @@ function getCardElement(img, name, type, price) {
 
 function onCars(cars) {
   if (!cars) return;
-
-  if (typeof cars === 'object') {
-    cars = Object.values(cars);
-  }
+  if (typeof cars === 'object') cars = Object.values(cars);
 
   const container = document.getElementById('cars-cards-container');
   container.innerHTML = '';
 
   cars.forEach((car) => {
-    const cardElement = getCardElement(
-      car.img,
-      car.name,
-      car.type,
-      car.price,
-    ).content.cloneNode(true);
-
+    const cardElement = getCardElement(car.img, car.name, car.type, car.price, car.returnDate).content.cloneNode(true);
+    if (cardElement.querySelector('button'))
+      cardElement.querySelector('button').onclick = () => localStorage.setItem('car', JSON.stringify(car));
     container.appendChild(cardElement);
   });
 }
@@ -82,35 +84,21 @@ async function fetchCars() {
     if (typeof VALUE === 'string') VALUE = VALUE.toLowerCase();
 
     try {
-      const cars = await firebase
-        .database()
-        .ref('cars')
-        .orderByChild(KEY)
-        .equalTo(VALUE)
-        .once('value');
-
+      const cars = await firebase.database().ref('cars').orderByChild(KEY).equalTo(VALUE).once('value');
       onCars(cars.val());
     } catch (err) {
       console.error(err);
     }
-
     return;
   }
 
   if (!!type) {
     try {
-      const cars = await firebase
-        .database()
-        .ref('cars')
-        .orderByChild('type')
-        .equalTo(type.toLowerCase())
-        .once('value');
-
+      const cars = await firebase.database().ref('cars').orderByChild('type').equalTo(type.toLowerCase()).once('value');
       onCars(cars.val());
     } catch (err) {
       console.error(err);
     }
-
     return;
   }
 
@@ -131,16 +119,28 @@ function initFields() {
   const returnDateInput = document.getElementById('returnDate');
   const datesSubmitButton = document.getElementById('datesSubmit');
 
-  datesSubmitButton.onclick = () => {
-    const rentDate = rentDateInput.value
-    const returnDate = 
+  datesSubmitButton.onclick = async () => {
+    const rentDate = new Date(rentDateInput.value).getTime();
+    const returnDate = new Date(returnDateInput.value).getTime();
+
+    if (rentDate > returnDate) {
+      alert('Return date must be more than rent date');
+      return;
+    }
+    if (rentDate === returnDate) {
+      alert('Dates must not be the same');
+      return;
+    }
+
+    const car = JSON.parse(localStorage.getItem('car'));
+    const updatedCar = { ...car, rentDate: rentDateInput.value, returnDate: returnDateInput.value };
+
+    return firebase.database().ref(`cars/${car.id}`).update(updatedCar);
   };
 
   mainSelect.onchange = ({ target }) => {
     filtersFormDivElements.forEach((div) => {
-      if (!div.hasAttribute('hidden')) {
-        div.setAttribute('hidden', '');
-      }
+      if (!div.hasAttribute('hidden')) div.setAttribute('hidden', '');
     });
 
     const value = target.value.trim().toLowerCase().replace(' ', '-');
@@ -175,9 +175,15 @@ function initFields() {
   };
 }
 
+function listenForDatabaseValuesChange() {
+  const cars = firebase.database().ref('cars/');
+  cars.on('value', (snapshot) => onCars(snapshot.val()));
+}
+
 jQuery('document').ready(() => {
   initFirebase();
   initFields();
   initRangeSlider();
   fetchCars();
+  listenForDatabaseValuesChange();
 });
