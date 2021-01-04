@@ -114,24 +114,23 @@ function initFields() {
   const mainSelect = document.getElementById('main-select');
   const filtersForm = document.getElementById('filters-form');
   const filtersFormDivElements = filtersForm.querySelectorAll('div[name]');
-
   const rentDateInput = document.getElementById('rentDate');
   const returnDateInput = document.getElementById('returnDate');
   const datesSubmitButton = document.getElementById('datesSubmit');
+  const d = new Date();
+  const rentDateInputMin = [d.getFullYear(), ('0' + (d.getMonth() + 1)).slice(-2), ('0' + d.getDate()).slice(-2)].join(
+    '-',
+  );
+
+  rentDateInput.min = rentDateInputMin;
+  rentDateInput.value = rentDateInputMin;
+  returnDateInput.min = [
+    d.getFullYear(),
+    ('0' + (d.getMonth() + 1)).slice(-2),
+    ('0' + (d.getDate() + 1)).slice(-2),
+  ].join('-');
 
   datesSubmitButton.onclick = async () => {
-    const rentDate = new Date(rentDateInput.value).getTime();
-    const returnDate = new Date(returnDateInput.value).getTime();
-
-    if (rentDate > returnDate) {
-      alert('Return date must be more than rent date');
-      return;
-    }
-    if (rentDate === returnDate) {
-      alert('Dates must not be the same');
-      return;
-    }
-
     const car = JSON.parse(localStorage.getItem('car'));
     const updatedCar = { ...car, rentDate: rentDateInput.value, returnDate: returnDateInput.value };
 
