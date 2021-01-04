@@ -9,10 +9,11 @@
 .rent-page .car-card {
   background-color: white;
   border-radius: 25px;
+  height: 100%;
 }
 
 .rent-page .car-image {
-  max-width: 100%;
+  display: block;
 }
 
 .popup-label {
