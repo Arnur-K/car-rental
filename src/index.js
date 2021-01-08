@@ -177,6 +177,8 @@ jQuery('document').ready(() => {
   initAnimations();
 });
 
+$("#economy").css("height", ($("#standard").outerHeight())+"px");
+
 $(".js-range-slider").ionRangeSlider({
   type: "double",
   min: 0,

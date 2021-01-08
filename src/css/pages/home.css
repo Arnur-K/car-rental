@@ -61,14 +61,14 @@ body {
 }
 
 .hero-img {
-  max-width: 80%;
+  max-width: 60%;
 }
 
 @media screen and (min-width: 992px) {
   .hero-img {
     position: absolute;
     z-index: 2;
-    left: 10%;
+    left: 20%;
   }
 }
 
@@ -141,7 +141,7 @@ body {
   width: 210px;
   position: absolute;
   top: -70px;
-  left: 170px;
+  left: 70%;
 }
 
 .card-container:last-child .card-image{
@@ -276,6 +276,16 @@ body {
 
 .carousel-indicators {
   bottom: 40px;
+}
+
+@media screen and (max-width: 991px) {
+  .carousel-indicators {
+    bottom: 45px !important;
+  }
+
+  .testimonial-carousel {
+    height: 400px !important;
+}
 }
 
 .carousel-content {
