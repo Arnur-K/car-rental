@@ -9,7 +9,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/tt-norms-medium" type="text/css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <title>Car Rental</title>
@@ -26,6 +26,7 @@
           <div class="navbar-nav">
             <a href="#!" class="nav-item nav-link">Home</a>
             <a href="rent.html" class="nav-item nav-link">Rent</a>
+            <a href="myrent.html" class="nav-item nav-link">My rent</a>
           </div>
           <div id="auth-buttons" class="navbar-nav ml-auto action-buttons">
             <div class="nav-item dropdown">
@@ -39,10 +40,6 @@
                     <input name="password" type="password" class="form-control" placeholder="Password" required />
                   </div>
                   <input type="submit" class="btn btn-primary btn-block" value="Login" />
-
-                  <!-- <div class="text-center mt-2">
-                    <a href="#">Forgot Your password?</a>
-                  </div> -->
                 </form>
                 <p name="login" class="paragraph"></p>
               </div>
@@ -97,7 +94,7 @@
           <a href="rent.html"><button class="mt-5 mb-5 button-primary">Rent</button></a>
         </div>
         <div class="img-container text-center">
-          <img class="hero-img" src="./img/hero car white 1.png" alt="car" />
+          <img class="hero-img" src="../img/hero car white 1.png" alt="car" />
         </div>
       </section>
 
@@ -130,7 +127,7 @@
               <a href="rent.html?type=economy">
                 <div id="economy" class="price-card text-center">
                   <div class="img-container">
-                    <img class="card-image" src="./img/polo.png" alt="polo car" />
+                    <img class="card-image" src="../img/polo.png" alt="polo car" />
                   </div>
                   <h4 class="mt-5 card-title">Economy</h4>
                   <p class="mt-4 card-text"
@@ -145,7 +142,7 @@
               <a href="rent.html?type=standard">
                 <div id="standard" class="price-card text-center">
                   <div class="img-container">
-                    <img class="card-image" src="./img/nissan.png" alt="" />
+                    <img class="card-image" src="../img/nissan.png" alt="" />
                   </div>
                   <h4 class="mt-5 card-title">Standard</h4>
                   <p class="mt-4 card-text"
@@ -160,7 +157,7 @@
               <a href="rent.html?type=business">
                 <div class="price-card text-center">
                   <div class="img-container">
-                    <img class="card-image" src="./img/lexus.png" alt="" />
+                    <img class="card-image" src="../img/lexus.png" alt="" />
                   </div>
                   <h4 class="mt-5 card-title">Business</h4>
                   <p class="mt-4 card-text"
@@ -184,7 +181,7 @@
           <div class="row">
             <div class="col-lg-6 col-12 offer-container">
               <div class="img-container">
-                <img class="offer-icon" src="./img/icon-offer-1.png" alt="" />
+                <img class="offer-icon" src="../img/icon-offer-1.png" alt="" />
               </div>
               <div class="text-container-offer">
                 <h4 class="offer-title">Choose your dream car</h4>
@@ -193,7 +190,7 @@
             </div>
             <div class="col-lg-6 col-12 offer-container">
               <div class="img-container">
-                <img class="offer-icon" src="./img/icon-offer-1.png" alt="" />
+                <img class="offer-icon" src="../img/icon-offer-1.png" alt="" />
               </div>
               <div class="text-container-offer">
                 <h4 class="offer-title">Fast service</h4>
@@ -204,7 +201,7 @@
           <div class="row mt-5">
             <div class="col-lg-6 col-12 offer-container">
               <div class="img-container">
-                <img class="offer-icon" src="./img/icon-offer-1.png" alt="" />
+                <img class="offer-icon" src="../img/icon-offer-1.png" alt="" />
               </div>
               <div class="text-container-offer">
                 <h4 class="offer-title">Security</h4>
@@ -213,7 +210,7 @@
             </div>
             <div class="col-lg-6 col-12 offer-container">
               <div class="img-container">
-                <img class="offer-icon" src="./img/icon-offer-1.png" alt="" />
+                <img class="offer-icon" src="../img/icon-offer-1.png" alt="" />
               </div>
               <div class="text-container-offer">
                 <h4 class="offer-title">Bonuses and more</h4>
@@ -328,6 +325,9 @@
               <li>
                 <a href="rent.html">Rent</a>
               </li>
+              <li>
+                <a href="myrent.html">My rent</a>
+              </li>
             </ul>
           </div>
           <!-- Grid column -->
@@ -369,8 +369,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="./firebase.js"></script>
-    <script src="./auth.js"></script>
-    <script src="./index.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>

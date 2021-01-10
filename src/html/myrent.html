@@ -9,7 +9,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <link
       rel="stylesheet"
       media="screen"
@@ -48,6 +48,7 @@
           <div class="navbar-nav">
             <a href="index.html" class="nav-item nav-link">Home</a>
             <a href="rent.html" class="nav-item nav-link">Rent</a>
+            <a href="myrent.html" class="nav-item nav-link">My rent</a>
           </div>
           <div id="auth-buttons" class="navbar-nav ml-auto action-buttons">
             <div class="nav-item dropdown">
@@ -148,128 +149,6 @@
       </nav>
     </header>
 
-    <main class="rent-page">
-      <section class="booking-menu mt-5">
-        <div class="container" >
-          <h1 class="title mb-4 text-center">Rent Your Car</h1>
-
-          <div class="form-row">
-            <div class="form-group col-12">
-              <label class="mr-sm-2" for="type">Filter by</label>
-              <select
-                class="custom-select mr-sm-2"
-                id="main-select"
-                name="type"
-              >
-                <option>Type</option>
-                <option>Brand</option>
-                <option>Fuel</option>
-                <option>Color</option>
-              </select>
-            </div>
-          </div>
-
-          <form id="filters-form">
-            <div class="form-row">
-              <div class="form-group col-12" name="type-div">
-                <label class="mr-sm-2" for="type">Type</label>
-                <select class="custom-select mr-sm-2" id="type-select" name="type">
-                  <option value="Economy">Economy</option>
-                  <option value="Standard">Standard</option>
-                  <option value="Business">Business</option>
-                </select>
-              </div>
-
-              <div class="form-group col-12" name="brand-div" hidden>
-                <label class="mr-sm-2" for="brandSelect">Brand</label>
-                <select
-                  class="custom-select mr-sm-2"
-                  id="brandSelect"
-                  name="brand"
-                >
-                  <option value="Mercedes">Mercedes</option>
-                  <option value="Nissan">Nissan</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Fiat">Fiat</option>
-                  <option value="Volkswagen">Volkswagen</option>
-                  <option value="Opel">Opel</option>
-                  <option value="Lexus">Lexus</option>
-                  <option value="Audi">Audi</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-12" name="fuel-div" hidden>
-                <label class="mr-sm-2" for="fuel">Fuel</label>
-                <select class="custom-select mr-sm-2" name="fuel">
-                  <option value="Gasoline">Gasoline</option>
-                  <option value="Gas">Gas</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-12" name="color-div" hidden>
-                <label class="mr-sm-2" for="color">Color</label>
-                <select class="custom-select mr-sm-2" name="color">
-                  <option value="Grey">Grey</option>
-                  <option value="Blue">Blue</option>
-                  <option value="White">White</option>
-                  <option value="Red">Red</option>
-                </select>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="button-primary mt-5">Filter</button>
-              </div>
-          </form>
-        </div>
-      </section>
-
-      <section class="cars mt-5">
-        <div 
-          class="container" 
-          id="cars-cards-container" 
-          style="display: flex; flex-wrap: wrap;"
-        ></div>
-      </section>
-
-
-
-      <div class="modal fade" id="rent-popup" tabindex="-1" role="dialog" aria-labelledby="rent-popup" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Rent a car</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-              <div class="form-row mt-3">
-
-                <div class="form-group col-md-6">
-                  <label class="control-label popup-label pr-4" for="rentDate">Rent Date</label>
-                  <input type="date" id="rentDate" name="rentDate">
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label class="control-label popup-label pr-4" for="returnDate">Return Date</label>
-                  <input type="date" id="returnDate" name="returnDate">
-                </div>
-
-              </div>
-
-              <div class="text-center">
-                <button type="button" class="button-primary popup-btn mt-3 mb-3 mr-3" data-dismiss="modal">Close</button>
-                <button type="button" class="button-primary popup-btn mt-3 mb-3" id="datesSubmit">Submit</button>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
 
     <!-- Footer -->
@@ -289,9 +168,7 @@
             <a href="#"
               ><h5 class="navbar-brand">Car<b>RENTAL</b></h5></a
             >
-            <p class="paragraph"
-              >Here you can use rows and columns to organize your footer
-              content.</p
+
             >
           </div>
           <!-- Grid column -->
@@ -310,8 +187,9 @@
               <li>
                 <a href="rent.html">Rent</a>
               </li>
-
-
+              <li>
+                <a href="myrent.html">My rent</a>
+              </li>
             </ul>
           </div>
           <!-- Grid column -->
@@ -353,9 +231,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-    <script src="./firebase.js"></script>
-    <script src="./auth.js"></script>
-    <script src="./rent.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>
