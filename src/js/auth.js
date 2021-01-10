@@ -28,9 +28,9 @@ function onUser(data) {
 
   document.querySelector('input[value="Sign Out"]').onclick = () => {
     firebase.auth().signOut();
-    document.querySelectorAll('.card-button-container').forEach((el) => {
-      el.innerHTML = 'Login to your account to rent';
-    });
+    document
+      .querySelectorAll('.card-button-container')
+      .forEach((el) => (el.innerHTML = 'Login to your account to rent'));
   };
 }
 
@@ -44,9 +44,7 @@ async function authUser(method, credentials) {
   switch (method) {
     case 'login':
       try {
-        const response = await firebase
-          .auth()
-          .signInWithEmailAndPassword(email, password);
+        const response = await firebase.auth().signInWithEmailAndPassword(email, password);
         console.log('function authUser login response: ', response);
       } catch (err) {
         onErrorMsg(method, err.message);
@@ -55,13 +53,10 @@ async function authUser(method, credentials) {
       break;
 
     case 'signup':
-      if (password !== confirmedPassword) {
-        return onErrorMsg(method, "Passwords don't match");
-      }
+      if (password !== confirmedPassword) return onErrorMsg(method, "Passwords don't match");
+
       try {
-        const response = await firebase
-          .auth()
-          .createUserWithEmailAndPassword(email, password);
+        const response = await firebase.auth().createUserWithEmailAndPassword(email, password);
         console.log('function authUser signup response: ', response);
       } catch (err) {
         onErrorMsg(method, err.message);
@@ -75,10 +70,7 @@ async function authUser(method, credentials) {
 }
 
 function initAuthForms() {
-  const authForms = [
-    document.getElementById('login-form'),
-    document.getElementById('signup-form'),
-  ];
+  const authForms = [document.getElementById('login-form'), document.getElementById('signup-form')];
 
   authForms.forEach((form) => {
     form.onsubmit = (event) => {
@@ -108,16 +100,10 @@ jQuery('document').ready(() => {
 
     if (user) {
       onUser(user.email);
-      if (authButtonsEl) {
-        authButtonsEl.setAttribute('hidden', '');
-      }
+      if (authButtonsEl) authButtonsEl.setAttribute('hidden', '');
     } else {
-      if (authButtonsEl) {
-        authButtonsEl.removeAttribute('hidden');
-      }
-      if (userInfoEl) {
-        userInfoEl.remove();
-      }
+      if (authButtonsEl) authButtonsEl.removeAttribute('hidden');
+      if (userInfoEl) userInfoEl.remove();
     }
   });
 });

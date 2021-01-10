@@ -1,6 +1,8 @@
 jQuery('document').ready(() => {
   initFirebase();
 
+  $('#economy').css('height', $('#standard').outerHeight() + 'px');
+
   var heading = {};
   heading.opacityIn = [0, 1];
   heading.sclaeIn = [0.2, 1];
@@ -62,5 +64,3 @@ jQuery('document').ready(() => {
       delay: 500,
     });
 });
-
-$('#economy').css('height', $('#standard').outerHeight() + 'px');

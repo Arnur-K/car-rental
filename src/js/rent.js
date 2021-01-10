@@ -1,18 +1,7 @@
 let KEY = null,
   VALUE = null;
 
-function initRangeSlider() {
-  $('.js-range-slider').ionRangeSlider({
-    type: 'double',
-    min: 0,
-    max: 500,
-    from: 90,
-    to: 300,
-    grid: true,
-  });
-}
-
-function getCardElement(img, name, type, price, returnDate) {
+function getCardElement(car) {
   const template = document.createElement('template');
 
   template.innerHTML = `
@@ -21,22 +10,22 @@ function getCardElement(img, name, type, price, returnDate) {
         <div class="img-container">
           <img
             class="car-image"
-            src="${img}"
+            src="${car.img}"
             alt="car"
           />
         </div>
         <div class="car-info mt-3">
-          <h4 class="car-name">${name}</h4>
-          <p class="car-type mt-3">${type.toUpperCase()}</p>
-          <p class="car-price mt-3">${price} PLN/day</p>
+          <h4 class="car-name">${car.name}</h4>
+          <p class="car-type mt-3">${car.type.toUpperCase()}</p>
+          <p class="car-price mt-3">${car.price} PLN/day</p>
           ${
-            !!returnDate
-              ? `<p class='car-return-date mt-3'>Available after ${new Date(returnDate).toLocaleDateString()}</p>`
+            !!car.returnDate
+              ? `<p class='car-return-date mt-3'>Available after ${new Date(car.returnDate).toLocaleDateString()}</p>`
               : ''
           }
         </div>
         ${
-          !returnDate
+          !car.returnDate
             ? `<div class="text-center card-button-container">
           ${
             firebase.auth().currentUser
@@ -63,13 +52,14 @@ function getCardElement(img, name, type, price, returnDate) {
 
 function onCars(cars) {
   if (!cars) return;
-  if (typeof cars === 'object') cars = Object.values(cars);
+  let array = [];
+  if (typeof cars === 'object') array = [...Object.values(cars)];
 
   const container = document.getElementById('cars-cards-container');
   container.innerHTML = '';
 
-  cars.forEach((car) => {
-    const cardElement = getCardElement(car.img, car.name, car.type, car.price, car.returnDate).content.cloneNode(true);
+  array.forEach((car) => {
+    const cardElement = getCardElement(car).content.cloneNode(true);
     if (cardElement.querySelector('button'))
       cardElement.querySelector('button').onclick = () => localStorage.setItem('car', JSON.stringify(car));
     container.appendChild(cardElement);
@@ -134,7 +124,11 @@ function initFields() {
     const car = JSON.parse(localStorage.getItem('car'));
     const updatedCar = { ...car, rentDate: rentDateInput.value, returnDate: returnDateInput.value };
 
-    return firebase.database().ref(`cars/${car.id}`).update(updatedCar);
+    await firebase.database().ref(`cars/${car.id}`).update(updatedCar);
+    await firebase.database().ref(`rent/${firebase.auth().currentUser.uid}/${car.id}`).set(updatedCar);
+
+    alert(`You succesfully rented ${car.name}`);
+    window.location.reload();
   };
 
   mainSelect.onchange = ({ target }) => {
@@ -174,15 +168,8 @@ function initFields() {
   };
 }
 
-function listenForDatabaseValuesChange() {
-  const cars = firebase.database().ref('cars/');
-  cars.on('value', (snapshot) => onCars(snapshot.val()));
-}
-
 jQuery('document').ready(() => {
   initFirebase();
   initFields();
-  initRangeSlider();
   fetchCars();
-  listenForDatabaseValuesChange();
 });

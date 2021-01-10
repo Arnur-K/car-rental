@@ -1,0 +1,35 @@
+.my-rent-page {
+  margin-top: 57px;
+}
+
+.my-rent-page h1 {
+  text-align: center;
+  padding-top: 24px;
+  color: var(--white);
+}
+
+.my-rent-page {
+  padding-top: 40px;
+}
+
+.my-rent-page label {
+  color: var(--headline-color);
+}
+
+.my-rent-page .car-card {
+  background-color: white;
+  border-radius: 25px;
+  height: 100%;
+}
+
+.my-rent-page .img-container {
+  max-width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-rent-page .car-image {
+  display: block;
+}
